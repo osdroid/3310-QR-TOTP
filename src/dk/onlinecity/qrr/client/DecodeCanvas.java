@@ -15,6 +15,7 @@ import javax.microedition.lcdui.game.GameCanvas;
 
 import com.podervisual.trinkets.MonochromeJpeg;
 import com.podervisual.trinkets.MonochromeUtils;
+import com.podervisual.trinkets.OTP;
 import com.podervisual.trinkets.QrTotpMidlet;
 
 import dk.onlinecity.qrr.QrReader;
@@ -197,8 +198,15 @@ public class DecodeCanvas extends GameCanvas implements Runnable
 			Thread.yield();
 		}
 		midlet.displayFileBrowser();
-		if (result != null)
-			midlet.showMsg(result);
+		if (result != null) {
+			try {				
+				midlet.showMsg(OTP.calcTotp(result));
+			} catch(Exception e) {
+				midlet.showMsg(e.toString());
+			} catch(Error e) {
+				midlet.showMsg(e.toString());
+			}
+		}
 	}
 
 	private void render(Graphics g)

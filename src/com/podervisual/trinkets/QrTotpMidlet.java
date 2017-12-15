@@ -129,7 +129,7 @@ public class QrTotpMidlet extends MIDlet {
 	            // TODO: Check if it's enough to only close the InputStream
 	            // fileConn.close(); 
 	        } catch (Exception e) {
-	        	showError("--2" + e.toString());
+	        	showError(e.toString());
 	        }
 	    }
 	    public void displayFileBrowser() {
